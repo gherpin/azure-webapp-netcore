@@ -34,9 +34,9 @@ jobs:
       # Run dotnet build and publish
       - name: dotnet build and publish
         run: |
-          dotnet restore
-          dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build' 
+          dotnet restore ./src/azure-webapp-netcore.csproj
+          dotnet build ./src/azure-webapp-netcore.csproj --configuration Release
+          dotnet publish ./src/azure-webapp-netcore.csproj -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/build' 
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
